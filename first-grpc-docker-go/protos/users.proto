@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package users;
+
+option go_package = "github.com/I-Frostbyte/first-grpc-docker-go/grpc/usersgrpc";
+
+import "google/protobuf/empty.proto";
+
+message User {
+    int64 id = 1;
+    string user = 2;
+    string email = 3;
+}
+
+// Request data to create new user
+message CreateUserRequest {
+    User user = 1;
+}
+
+// Response data for created user
+message CreateUserResponse {
+    // ID of created user
+    int64 id = 1;
+}
+
+// Contains list of all users
+message ReadAllUserResponse {
+    // list of users
+    repeated User userlist = 1;
+}
+
+// Service to manage list of users
+service UserService {
+    // Create new user
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+
+    // Read all users
+    rpc ReadAllUsers(google.protobuf.Empty) returns (ReadAllUserResponse);
+}
