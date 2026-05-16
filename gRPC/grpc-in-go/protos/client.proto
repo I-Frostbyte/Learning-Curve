@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package client;
+
+option go_package = "github.com/I-Frostbyte/Learning-Curve/gRPC/grpc-in-go/protobufs/client";
+
+service ClientService {
+    rpc GetUser (ClientRequest) returns (ClientResponse);
+}
+
+message ClientRequest {
+    string id = 1;
+}
+
+message ClientResponse {
+    string id = 1;
+    string name = 2;
+    int32 age = 3;
+}

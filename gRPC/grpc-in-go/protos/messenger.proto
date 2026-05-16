@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package messenger;
+
+option go_package = "github.com/I-Frostbyte/Learning-Curve/gRPC/grpc-in-go/protobufs/messenger";
+
+service MessengerService {
+    rpc GetUser (MessengerRequest) returns (MessengerResponse);
+}
+
+message MessengerRequest {
+    string id = 1;
+}
+
+message MessengerResponse {
+    string id = 1;
+    string name = 2;
+    int32 age = 3;
+}
